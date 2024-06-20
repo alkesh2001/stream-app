@@ -1,14 +1,17 @@
+
 import multer from "multer"
 
 const storage = multer.diskStorage({
     destination : function(req , file , cb)  {
-        cd(null , "./public/temp" )
+        cb(null , "./public/temp" )
     },
     fillname : function(req,file , cb){
-        cd(null , "./public/temp")
+        cb(null , file.originalname)
     }
 })
 
 export const upload = multer({
-    storage
+    storage,
+    limits: { fileSize: 100000000 }, 
 })
+ 
