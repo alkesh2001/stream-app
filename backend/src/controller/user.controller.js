@@ -119,8 +119,20 @@ const logoutUser = asyncHandler(async (req , res)=>{
 
 })
 
+const getCurrentUser = asyncHandler(async(req , res)=>{
+    try {
+      const user = req.user ;
+
+      return res.status(201).json({user , message : 'Current user fetched successfully'})
+
+    } catch (error) {
+        return res.status(404).json({message : 'get user not found'})
+    }
+})
+
 export {
     registerUser,
     loginUser ,
-    logoutUser
+    logoutUser ,
+    getCurrentUser
 }

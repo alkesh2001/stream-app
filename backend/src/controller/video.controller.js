@@ -3,23 +3,16 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 const uploadVideo = asyncHandler(async(req, res)=>{
-    console.log("UploadVideo function called");
-    console.log("Request body:", req.body);
-    console.log("Request file:", req.file);
+
     const {title , description } = req.body
 
     if(!title && !description){
-        console.log("title or description not rec")
         return res.status(400).json({message : "title or description are required"})
     }
    
     const videoLocalPath = req.files?.videoFile[0].path
-    
-    console.log(videoLocalPath , 'video local path undefined')
 
     const thumbnailLocalPath = req.files?.thumbnail[0]?.path
-    console.log(thumbnailLocalPath , 'thumbnailLocalPath undefined')
-
 
     if(!videoLocalPath){
         return res.status(400).json({message : "video file is required"})
@@ -29,10 +22,8 @@ const uploadVideo = asyncHandler(async(req, res)=>{
         return res.status(40).json({message : "thumbnail file is required"})
     }
 
-
     const video = await uploadOnCloudinary(videoLocalPath)
     const thumbnail = await uploadOnCloudinary(thumbnailLocalPath)
-    console.log(video)
 
     if(!video){
         return res.status(400).json({message : "video file is required"})
@@ -43,7 +34,6 @@ const uploadVideo = asyncHandler(async(req, res)=>{
     }
 
     const user = req.user 
-    console.log(user)
 
     const videofile =   await Video.create({
         title ,
@@ -58,7 +48,18 @@ const uploadVideo = asyncHandler(async(req, res)=>{
 
 })
 
+const getAllVideos = asyncHandler(async(req, res) =>{
+
+     const allvideo = await Video.find({})
+
+     if(!allvideo){
+        return res.status(400).json({message : 'get all video not found'})
+     }
+
+     return res.status(201).json({allvideo , message : "get all videos"})
+})
 
 export {
-    uploadVideo
+    uploadVideo ,
+    getAllVideos
 }
