@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Video } from "../models/video.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
@@ -34,14 +35,16 @@ const uploadVideo = asyncHandler(async(req, res)=>{
     }
 
     const user = req.user 
+    const username = user.username
 
-    const videofile =   await Video.create({
+    const videofile =  await Video.create({
         title ,
-        description ,
+        description , 
         videoFile : video.url,
         thumbnail : thumbnail.url,
         duration : video.duration ,
-        owner : user._id
+        owner : user,
+        username: username
     })
 
     return res.status(201).json({  videofile , message : "video upload successfully"})

@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../component/Navbar'
 import BottomBar from '../component/BottomBar'
 import axios from 'axios'
 import VideoCard from '../component/VideoCard'
+import Aside from '../component/Aside'
+import { useSelector } from 'react-redux'
+
+
 function Home() {
   
-  const [currentUser , setCurrentUser] = useState(null)
   const [allvideo , setAllvideo] = useState(null)
   useEffect(()=>{
-     const getData = async() =>{
-        try {
-            const res = await axios.get("http://localhost:8000/api/v1/user/getCurrentUser" ,{
-              headers : {
-                Authorization : 'Bearer' + localStorage.getItem('accessToken')
-              }
-            })
-            if(res){
-              setCurrentUser(res.data.user)
-            }
-        } catch (error) {
-            console.log(error , "error when get current user")
-        }
-     }
      
      const getAllvideos = async () =>{
        try {
@@ -31,56 +19,41 @@ function Home() {
             }
           })
           if(res){
-            console.log(res.data.allvideo)
             setAllvideo(res.data.allvideo)
           }
        } catch (error) {
-        
+        console.log(error , "error when getall videos")
        }
      }
      getAllvideos()
-     getData()
   },[])
 
-  console.log(currentUser)
-  console.log(allvideo)
-
-
-
+  const visible = useSelector(state => state.visibility.visible)
 
   return (
-    <div className='relative'>
-        <div className="pb-10">
-            <Navbar userData={currentUser}/>
+    <div className='relative h-svh'>
+        <div className='grid  pt-16'>
+          <div className={`h-full ${visible? 'w-[210px]' : ' w-[80px] '} fixed  bg-green-500`}>
+             <Aside visible={visible}/>
+          </div>
+           <div className={`absolute  ${visible? "" : "left-[145px]"}  top-20 left-52 h-full col-span-12 px-6 `}>
+              <div className={`grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 `}>
+                {
+                  allvideo && allvideo.map((item , id)=>(
+                    <VideoCard item={item} key={id}/>
+                  ))
+                }
+              </div>
+           </div>
         </div>
-        <div className="fixed bottom-0 left-0 w-full">
+
+        {/* <div className="fixed bottom-0 left-0 w-full">
            <BottomBar/>
         </div>
-        <div>
-          {
-            allvideo && allvideo.map((item , id)=>(
-              <VideoCard item={item} key={id}/>
-            ))
-          }
-        </div>
+        <div className='pb-20'>
+        </div> */}
   </div>
   )
 }
 
 export default Home
-
-/* <div className="pb-10">
-    <Navbar/>
-    <VideoCard/>
-    <VideoCard/>
-    <VideoCard/>
-    <VideoCard/>
-    <VideoCard/>
-    <VideoCard/>
-    <VideoCard/>
-</div>
-  <div className="fixed bottom-0 left-0 w-full">
-    <BottomBar/>
-  </div> */
-  /* <SignUp/> */
-  /* <Login/> */

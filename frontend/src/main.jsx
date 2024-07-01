@@ -6,6 +6,10 @@ import {RouterProvider , createBrowserRouter} from "react-router-dom"
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import UploadVideo from './pages/UploadVideo.jsx'
+import PlayVideo from './pages/PlayVideo.jsx'
+import store from './redux/store/store.js'
+import { Provider} from 'react-redux'
+
 
 const router = createBrowserRouter([
   {
@@ -23,14 +27,20 @@ const router = createBrowserRouter([
       {
         path : "/upload" ,
         element : <UploadVideo/>
+      },
+      {
+        path : "/PlayVideo" ,
+        element : <PlayVideo/>
       }
-     ]
+    ]
   }
 ])
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <Provider store={store}>
+      <RouterProvider router={router}/>
+    </Provider>
   </React.StrictMode>,
 )
