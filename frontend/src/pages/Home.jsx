@@ -33,11 +33,11 @@ function Home() {
   return (
     <div className='relative h-svh'>
         <div className='grid  pt-16'>
-          <div className={`h-full ${visible? 'w-[210px]' : ' w-[80px] '} fixed  bg-green-500`}>
+          <div className={`hidden sm:block h-full ${visible? 'w-[210px]' : ' w-[80px] '} fixed  bg-green-500`}>
              <Aside visible={visible}/>
           </div>
-           <div className={`absolute  ${visible? "" : "left-[145px]"}  top-20 left-52 h-full col-span-12 px-6 `}>
-              <div className={`grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 `}>
+           <div className={`sm:absolute  ${visible? "" : "left-[145px]"}  top-20 left-52 h-full col-span-12 px-6 `}>
+              <div className={`grid grid-cols-1    lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 `}>
                 {
                   allvideo && allvideo.map((item , id)=>(
                     <VideoCard item={item} key={id}/>
@@ -47,11 +47,11 @@ function Home() {
            </div>
         </div>
 
-        {/* <div className="fixed bottom-0 left-0 w-full">
+        <div className=" sm:hidden fixed bottom-0 left-0 w-full">
            <BottomBar/>
         </div>
         <div className='pb-20'>
-        </div> */}
+        </div>
   </div>
   )
 }

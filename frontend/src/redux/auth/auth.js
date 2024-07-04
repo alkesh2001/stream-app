@@ -11,11 +11,10 @@ const visibleSlice = createSlice({
         toggleVisiblity : (state ) => {
             state.visible = !state.visible
         }
-       
     }
 })
 
 
-export const {toggleVisiblity} = visibleSlice.actions
+export const { toggleVisiblity } = visibleSlice.actions
 
 export default visibleSlice.reducer

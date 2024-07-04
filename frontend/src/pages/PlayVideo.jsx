@@ -1,12 +1,29 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import { ThumbsUp ,ThumbsDown } from 'lucide-react';
-function PlayVideo() {
+import { ThumbsUp ,ThumbsDown ,ChevronDown, Rss } from 'lucide-react';
+import axios from "axios"
 
+function PlayVideo() {
    const location = useLocation()
    const {item} = location.state || {} ; 
+   console.log(item)
 
-    console.log(item)
+    console.log(item.owner)
+
+    const subs = async () =>{
+       try {
+          const res = await axios.post(`http://localhost:8000/api/v1/subscription/c/${item.owner}` , {},{
+            headers : {
+              Authorization : 'Bearer' + localStorage.getItem("accessToken")
+            }
+          })
+          if(res){
+          console.log(res)
+          }
+       } catch (error) {
+         console.log(error, "error when user subscribe btn hit ")
+       }
+    }
 
   return (
     <div className='h-full w-full px-7 pt-24'>
@@ -36,11 +53,21 @@ function PlayVideo() {
             </div>
           </div>
           <div className='me-8  pt-3'>
-             <span className='rounded-full border border-gray-500 px-3 py-1 font-medium text-sm'>
+             <span onClick={subs}  className='rounded-full border border-gray-500 px-3 py-1 font-medium text-sm'>
                 subscribe
              </span>
           </div>
-          
+        </div>
+        <div className='w-11/12 px-5 mt-4'>
+          <div className='bg-gray-200 rounded-2xl p-4 px-6'>
+            <div className='flex justify-between'>
+               <div>des</div>
+               <div><ChevronDown /></div>
+            </div>
+          </div>
+        </div>
+        <div className='font-medium text-lg w-11/12 px-7 m-4'>
+          Comments
         </div>
       </div>
     </div>
