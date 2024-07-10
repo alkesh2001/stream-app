@@ -3,7 +3,7 @@ import React from 'react'
 
 function BottomBar() {
   return (
-    <div className='bg-white py-5 border-t rounded-tr-3xl rounded-t-3xl border-gray-200'>
+    <div className='bg-black py-5  rounded-tr-3xl rounded-t-3xl '>
        <div className='flex justify-center gap-14'>
         <div><Home/></div>
         <div> <Flame /></div>

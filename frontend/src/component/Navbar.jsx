@@ -11,7 +11,7 @@ function Navbar({userData}) {
   const dispatch = useDispatch()
 
   return (
-    <div className='w-full flex justify-center bg-blue-500 '>
+    <div className='w-full flex justify-center bg-black text-white '>
        <div className='w-full '>
            <div className='w-full '>
             <div className='grid-cols-3 gap-5 flex justify-between px-5 py-3'>
@@ -26,17 +26,17 @@ function Navbar({userData}) {
                 </div>
                 <div className='md:w-3/4 w-full  flex justify-end' >
                   <div className='w-full flex items-center justify-between'>
-                    <div className='bg-gray-200 h-10 flex justify-end rounded-2xl  w-4/5 '> 
+                    <div className=' relative h-10 flex justify-end rounded-2xl  w-4/5 '> 
                       <div className='w-full'>
-                        <Input className=' bg-gray-200 h-10'/>
+                        <Input className=' bg-black border rounded-2xl border-gray-300 text-white h-10'/>
                       </div>
-                      <div className='border-s border-gray-500 h-10 w-12 bg-gray-200 rounded-br-2xl rounded-tr-2xl flex justify-center items-center'>
+                      <div className='absolute top-0 -right-2 border  border-gray-300 h-10 w-12 bg-black rounded-br-2xl rounded-tr-2xl flex justify-center items-center'>
                         <Search />
                       </div>
                     </div>
 
                     <div className='flex justify-end '>
-                      <div className='bg-gray-200  text-xl  font-medium rounded-2xl h-10 w-10 flex justify-center items-center'>
+                      <div className='bg-black border border-gray-500  text-xl  font-medium rounded-2xl h-10 w-10 flex justify-center items-center'>
                           {userData && userData.username[0]}
                       </div>
                     </div>

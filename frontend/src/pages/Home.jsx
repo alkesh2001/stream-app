@@ -31,9 +31,9 @@ function Home() {
   const visible = useSelector(state => state.visibility.visible)
 
   return (
-    <div className='relative h-svh'>
+    <div className='relative h-svh  text-white'>
         <div className='grid  pt-16'>
-          <div className={`hidden sm:block h-full ${visible? 'w-[210px]' : ' w-[80px] '} fixed  bg-green-500`}>
+          <div className={`hidden sm:block h-full ${visible? 'w-[210px]' : ' w-[80px] '} fixed bg-black `}>
              <Aside visible={visible}/>
           </div>
            <div className={`sm:absolute  ${visible? "" : "left-[145px]"}  top-20 left-52 h-full col-span-12 px-6 `}>

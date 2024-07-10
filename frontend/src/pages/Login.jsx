@@ -35,14 +35,14 @@ const login =  async (userData) =>{
             <form onSubmit={handleSubmit(login)}>
                 <div className='mt-5  grid gap-4'>
                     <div className='px-6 '>
-                        <Input type="email" placeholder='Email' {...register("email",{
+                        <Input type="email" className="rounded-lg" placeholder='Email' {...register("email",{
                             required : true , validate : { matchPartern: (value) =>
                                 /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
                                 "Email address must be valid address",}
                             })}/>
                     </div>
                     <div className='px-6 '>
-                        <Input type="password" placeholder='Password' {...register("password" ,{
+                        <Input type="password" className="rounded-lg" placeholder='Password' {...register("password" ,{
                             required : true
                         })}/>
                     </div>

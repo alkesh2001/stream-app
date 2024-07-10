@@ -12,7 +12,7 @@ function VideoCard({item}) {
            </div>
            <div className='flex gap-4 px-3 pt-3'>
                <div className='pt-1'>
-                  <div className='bg-gray-200 font-medium text-md h-10 w-10 flex justify-center items-center rounded-2xl'>
+                  <div className='bg-black border font-medium text-md h-10 w-10 flex justify-center items-center rounded-2xl'>
                      {item.username[0]}
                   </div>
                </div>
@@ -21,12 +21,12 @@ function VideoCard({item}) {
                   <div>{item.title}</div>
                   <div><Ellipsis/></div>
                </div>
-               <div className=' flex gap-2 text-sm'>
+               <div className=' flex gap-2 text-sm text-gray-400'>
                   <div>
                         {item.username}
                   </div>
-                  <div className='text-sm'>{item.views} views</div>
-                  <div>12 dec</div>
+                  <div className='text-xs flex items-center'>{item.views} views</div>
+                  <div className='text-xs flex items-center'>12 dec</div>
                </div>
                </div>
            </div>
