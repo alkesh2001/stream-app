@@ -9,6 +9,9 @@ import UploadVideo from './pages/UploadVideo.jsx'
 import PlayVideo from './pages/PlayVideo.jsx'
 import store from './redux/store/store.js'
 import { Provider} from 'react-redux'
+import Protect from './component/ProtectCompo.jsx'
+import AccountCard from './component/AccountCard.jsx'
+import Channel from './pages/Channel.jsx'
 
 
 const router = createBrowserRouter([
@@ -18,19 +21,41 @@ const router = createBrowserRouter([
      children : [
       {
         path : "/Home" ,
-        element : <Home/>
+        element :(
+          <Protect authentication>
+            {''}
+               <Home/>
+          </Protect>
+          ) 
       } ,
       {
         path : '/',
-        element : <Login/>
+        element : (
+          <Protect authentication={false}>
+               <Login/>
+          </Protect>
+          ) 
       },
       {
-        path : "/upload" ,
+        path : "/Upload",
         element : <UploadVideo/>
       },
       {
+        path : "/Channel" ,
+        element : <Channel/>
+      },
+      {
+        path : "/AccountCard" ,
+        element : <AccountCard/>
+      },
+      {
         path : "/PlayVideo" ,
-        element : <PlayVideo/>
+        element :(
+          <Protect authentication>
+            {''}
+            <PlayVideo/>
+          </Protect>
+          ) 
       }
     ]
   }

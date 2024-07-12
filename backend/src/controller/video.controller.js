@@ -48,7 +48,6 @@ const uploadVideo = asyncHandler(async(req, res)=>{
     })
 
     return res.status(201).json({  videofile , message : "video upload successfully"})
-
 })
 
 const getAllVideos = asyncHandler(async(req, res) =>{

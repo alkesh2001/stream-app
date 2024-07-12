@@ -1,20 +1,35 @@
-import {createSlice} from "@reduxjs/toolkit"
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
+createAsyncThunk
 
 const initialState ={
-    visible : true
-}
+    visible : true , 
+    userData : null ,
+    status : false , 
+    accessToken : null
+};
 
-const visibleSlice = createSlice({
-    name : 'visible',
+const authSlice = createSlice({
+    name : 'auth',
     initialState ,
     reducers : {
         toggleVisiblity : (state ) => {
-            state.visible = !state.visible
+            state.visible = !state.visible;
+        },
+        loginUser : (state , action) =>{
+            state.status = true ,
+            state.userData = action.payload;
+        },
+        userAccessToken : (state , action) =>{
+            state.status = true ,
+            state.accessToken = action.payload
+        } ,
+        logoutUser : (state)=>{
+            state.status = false ,
+            state.userData = null
         }
     }
 })
 
-
-export const { toggleVisiblity } = visibleSlice.actions
-
-export default visibleSlice.reducer
+export const {toggleVisiblity, loginUser , logoutUser , userAccessToken} = authSlice.actions;
+export default authSlice.reducer;

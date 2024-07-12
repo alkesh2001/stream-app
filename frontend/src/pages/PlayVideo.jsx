@@ -1,30 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ThumbsUp ,ThumbsDown ,ChevronDown, Rss } from 'lucide-react';
 import axios from "axios"
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 function PlayVideo() {
    const location = useLocation()
    const {item} = location.state || {} ; 
-
-    const subs = async () =>{
-       try {
-          const res = await axios.post(`http://localhost:8000/api/v1/subscription/c/${item.owner}` , {},{
-            headers : {
-              Authorization : 'Bearer' + localStorage.getItem("accessToken")
-            }
-          })
-          if(res){
-          console.log(res)
+   
+   const subs = async () =>{
+     try {
+       const res = await axios.post(`http://localhost:8000/api/v1/subscription/c/${item.owner}` , {},{
+         headers : {
+           Authorization : 'Bearer' + localStorage.getItem("accessToken")
           }
-       } catch (error) {
-         console.log(error, "error when user subscribe btn hit ")
-       }
+        })
+        if(res){
+          console.log(res)
+        }
+      } catch (error) {
+        console.log(error, "error when user subscribe btn hit ")
+      }
     }
-
-
-  const visible = useSelector(state => state.visibility.visible)
+    
+    const [subscribe ,setSubscribe] = useState(null)
+    
+    useEffect(()=>{
+         const resdata = async () =>{
+          try {
+            const res = await axios.get(`http://localhost:8000/api/v1/user/c/${item.username}` ,{
+              headers : {
+                Authorization : 'Bearer' + localStorage.getItem("accessToken")
+              }
+            })
+            setSubscribe(res.data.res.isSubscribed)
+          } catch (error) {
+             console.log(error , " error when user get susbcribed or not ")
+          }
+         }
+         resdata()
+    },[subscribe])
 
   return (
     <div className='h-full md:w-3/4 px-7 pt-24 text-white'>
@@ -54,8 +69,8 @@ function PlayVideo() {
             </div>
           </div>
           <div className='me-8  pt-3'>
-             <span onClick={subs}  className='rounded-full border border-gray-500 px-3 py-1 font-medium text-sm'>
-                subscribe
+             <span onClick={subs}  className='cursor-pointer rounded-full border border-gray-500 px-3 py-1 font-medium text-sm'>
+                {/* {subscribe? "subscribed" : "susbcribe"} */}
              </span>
           </div>
         </div>

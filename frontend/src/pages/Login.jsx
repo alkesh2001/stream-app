@@ -18,6 +18,7 @@ const login =  async (userData) =>{
         if(res){
             console.log(res)
         }
+        // dispatch(userAccessToken(res.data.accessToken))
         localStorage.setItem("accessToken" , res.data.accessToken)
         navigate('/Home')
 
@@ -27,8 +28,8 @@ const login =  async (userData) =>{
 }
 
   return (
-    <div className='h-screen flex justify-center items-center bg-gray-200'>
-       <div className='w-5/6 py-5 rounded-2xl text-white bg-gray-800'>
+    <div className='h-screen w-full px-5 flex justify-center items-center bg-gray-200'>
+       <div className='w-[400px]  py-5 rounded-2xl text-white bg-gray-800'>
             <div className='text-lg font-medium text-center pt-5'>
                     welcome to Stream-App
             </div>
