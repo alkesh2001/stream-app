@@ -30,11 +30,18 @@ function Home() {
 
   return (
     <div className='relative h-svh  text-white'>
-           <div className={`sm:absolute  ${visible? "" : "left-[145px]"} pt-16  left-52 h-full col-span-12 px-6 `}>
+           <div className={`sm:absolute  ${visible? "left-[240px]" : "left-[24px]"} pt-16  h-full col-span-12 px-6 `}>
               <div className={`grid grid-cols-1    lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 `}>
                 {
                   allvideo && allvideo.map((item , id)=>(
+                    <div>
+
                     <VideoCard item={item} key={id}/>
+                    <VideoCard item={item} key={id}/>
+                    <VideoCard item={item} key={id}/>
+                    <VideoCard item={item} key={id}/>
+                    <VideoCard item={item} key={id}/>
+                    </div>
                   ))
                 }
               </div>

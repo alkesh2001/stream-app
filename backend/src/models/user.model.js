@@ -24,7 +24,13 @@ const userSchema = new Schema({
     password : {
         type : String ,
         required : true
-    }
+    } , 
+    watchHistory: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Video"
+        }
+    ],
 
 } , {timestamps : true})
 

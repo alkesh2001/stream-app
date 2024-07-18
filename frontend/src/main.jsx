@@ -20,16 +20,15 @@ const router = createBrowserRouter([
      element : <App/>,
      children : [
       {
-        path : "/Home" ,
+        path : "/" ,
         element :(
-          <Protect authentication>
-            {''}
+          <Protect >
                <Home/>
           </Protect>
           ) 
       } ,
       {
-        path : '/',
+        path : '/Login',
         element : (
           <Protect authentication={false}>
                <Login/>

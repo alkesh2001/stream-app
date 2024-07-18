@@ -1,31 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import {Search, Youtube , Menu, Pointer} from "lucide-react"
 import Input from './Input'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleVisiblity } from '../redux/auth/auth'
 import AccountCard from './AccountCard'
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
+import { currentUser } from '../redux/auth/auth.js'
 function Navbar() {
   
   const dispatch = useDispatch();
   const userData = useSelector(state=> state.auth.userData)
-  
+  const navigate = useNavigate()
   const [show , setShow] = useState(false)
 
   const showAccount = () =>{
     setShow(!show)
   }
 
+
+
   return (
-    <div className='w-full  bg-black text-white '>
+    <div className='w-full  bg-black text-white z-40'>
             <div className='flex flex-row sm:gap-5  px-5 py-3'>
                 <div className='flex basis-1/4 sm:basis-2/5 md:basis-2/6 justify-start  md:gap-10  gap-3'>
                   <div className=' hidden  sm:flex justify-center items-center sm:ps-4'>
                     <Menu onClick={()=> dispatch(toggleVisiblity())} cursor={Pointer}/>
                   </div>
-                  <div className=' flex gap-2 justify-center items-center'>
-                    <Youtube height={'40px'} width={'40px'}/>
+                  <div className=' flex gap-2 justify-center items-center cursor-pointer' onClick={()=> navigate('/Home')}>
+                    <Youtube height={'40px'} width={'40px'} />
                     <span className='hidden text-sm md:text-lg sm:block'>Stream-App</span>
                   </div>
                 </div>

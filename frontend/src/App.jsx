@@ -1,17 +1,17 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import Navbar from "./component/Navbar"
 import { useState , useEffect  } from "react"
 import axios from "axios"
 import { useLocation } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { loginUser } from "./redux/auth/auth"
+import { currentUser } from "./redux/auth/auth"
 import Aside from "./component/Aside"
 import BottomBar from "./component/BottomBar"
 import { useSelector } from 'react-redux'
 function App() {
 
   const location = useLocation()
-  // const [currentUser , setCurrentUser] = useState(null)
+  const navigate = useNavigate()
 
   const visible = useSelector(state => state.auth.visible)
 
@@ -26,7 +26,7 @@ function App() {
               }
             })
             if(res){
-              dispatch(loginUser(res.data.user))
+              dispatch(currentUser(res.data.user))
             }
         } catch (error) {
             console.log(error , "error when get current user")
@@ -34,35 +34,36 @@ function App() {
      }
      getData()
   },[])
-
+ 
   return (
     <div>
-      {
-        location.pathname !== "/" && (
+      {/* {
+       ( */}
           <div className="fixed z-10 w-full">
                 <Navbar/>
           </div>
-        )
-      }
-      <div className='relative h-svh  text-white'>
-        <div className='grid '>
-          <div className={`hidden sm:block h-full ${visible? 'w-[210px]' : ' w-[80px] '} fixed `}>
-          {
-              location.pathname !== "/" && (
-                <div className="">
-                      <Aside visible={visible}/>
+        {/* )
+      } */}
+      {/* <div className=' text-white'> */}
+        <div className='flex  text-white  w-full'> 
+          {/* {
+              ( */}
+                <div className={`fixed sm:block z-10  ${visible? 'w-[220px]' : ''} `}>
+                  <div className="w-full">
+                        <Aside visible={visible}/>
+                  </div>
                 </div>
-              )
-          } 
-          </div>
-          <div>
+              {/* )
+          }  */}
+          <div className="w-full">
              <Outlet/>
           </div>
         </div>
+
         <div className=" sm:hidden fixed bottom-0 left-0 w-full">
            <BottomBar/>
         </div>
-        </div>
+        {/* </div> */}
     </div>
   )
 }

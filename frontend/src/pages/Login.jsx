@@ -2,29 +2,21 @@ import React from 'react'
 import Input from "../component/Input"
 import Button from "../component/Button"
 import {useForm} from 'react-hook-form'
-import axios from  "axios"
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { loginData } from '../redux/auth/auth'
 
 function Login() {
 
   const {register ,handleSubmit  } = useForm() 
-
+const dispatch = useDispatch();
    const navigate = useNavigate()
 
 
 const login =  async (userData) =>{
-    try {
-        const res = await axios.post('http://localhost:8000/api/v1/user/login' ,userData)
-        if(res){
-            console.log(res)
-        }
-        // dispatch(userAccessToken(res.data.accessToken))
-        localStorage.setItem("accessToken" , res.data.accessToken)
-        navigate('/Home')
 
-    } catch (error) {
-        console.log(error , "error when user login")
-    }
+    dispatch(loginData({userData})) 
+    navigate('/Home')
 }
 
   return (
