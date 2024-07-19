@@ -5,6 +5,8 @@ import UploadVideo from './UploadVideo'
 function Channel() {
 
   const userData = useSelector(state=> state.auth.userData)
+
+  const visible = useSelector(state => state.auth.visible)
   const navigate = useNavigate()
 
   const [show , setShow] = useState(false)
@@ -18,8 +20,8 @@ function Channel() {
   }
 
   return (
-    <div className={`text-white font-medium pt-20 relative `}>
-        <div className='flex gap-5 py-5 border-b border-gray-700 px-28'>
+    <div className={`text-white font-medium absolute w-full h-full pt-20 ${visible? "ps-[200px]" : "ps-[80px]"} `}>
+        <div className='flex gap-5 py-5 border-b border-gray-700 px-24'>
            <div className='bg-orange-600 h-32 w-32 rounded-full flex justify-center items-center font-semibold text-5xl'>{userData && userData.username[0]}</div>
             <div className='flex items-center  gap-3'>
                 <div className=''>
@@ -27,7 +29,7 @@ function Channel() {
                     <div className='font-medium text-sm'>{userData && userData.email}</div>
                     <div className='bg-gray-700  text-sm font-medium rounded-2xl   px-1 py-1 mt-4'>
                         <div className='text-center cursor-pointer' onClick={toggleshow}>Manage Video</div>
-                        <div className={`absolute top-32 left-52 w-4/6 h-3/4 ${show? "" : "hidden"}`}>
+                        <div className={`absolute top-32  ${visible? "left-[300px]" : "left-[250px]"} w-4/6 h-3/4 ${show? "" : "hidden"}`}>
                             <UploadVideo show={show} handleHide={handleHide}/> 
                         </div>
                     </div>

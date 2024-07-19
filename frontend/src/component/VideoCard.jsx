@@ -21,7 +21,7 @@ function VideoCard({item}) {
                </div>
                <div className='w-full'>
                <div className='flex relative justify-between'>
-                  <div>{item.title}</div>
+                  <div>{item.title.length > 22 ? `${item.title.substring(0 , 22)} ... ` : `${item.title}`}</div>
                   <div onClick={()=> setShowCard(!showCard)}> <Ellipsis/> </div>
                   <div className={`bg-gray-400 py-2 px-2 rounded-lg text-black font-medium text-sm absolute top-7 right-0 ${showCard ? "" : "hidden"}`}>
                      add to playList

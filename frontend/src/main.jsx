@@ -20,15 +20,16 @@ const router = createBrowserRouter([
      element : <App/>,
      children : [
       {
-        path : "/" ,
+        path : "/Home" ,
         element :(
-          <Protect >
+          <Protect authentication>
+               {''}
                <Home/>
           </Protect>
           ) 
       } ,
       {
-        path : '/Login',
+        path : '/',
         element : (
           <Protect authentication={false}>
                <Login/>
@@ -41,7 +42,12 @@ const router = createBrowserRouter([
       },
       {
         path : "/Channel" ,
-        element : <Channel/>
+        element : (
+          <Protect authentication>
+            {''}
+            <Channel/>
+          </Protect>
+        )
       },
       {
         path : "/AccountCard" ,

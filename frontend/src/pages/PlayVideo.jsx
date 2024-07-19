@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ThumbsUp ,ThumbsDown ,ChevronDown, Rss } from 'lucide-react';
 import axios from "axios"
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function PlayVideo() {
    const location = useLocation()
@@ -10,6 +10,8 @@ function PlayVideo() {
    
    const [subscribe ,setSubscribe] = useState('')
    const [checkSub , setCheckSub] = useState()
+
+  const visible = useSelector(state => state.auth.visible)
 
    const subs = async () =>{
      try {
@@ -50,7 +52,7 @@ function PlayVideo() {
     },[subscribe])
 
   return (
-    <div className=' z-10 '>
+    <div className={`${visible? "ps-[200px]" : "ps-[80px]"} `}>
       <div className=' h-full md:w-8/12 px-7 pt-24 text-white'>
         <div className=' grid justify-left '>
           <div className='h-full  px-5  flex justify-center'>

@@ -17,53 +17,53 @@ function App() {
 
   const dispatch = useDispatch()
 
-  useEffect(()=>{
-     const getData = async() =>{
-        try {
-            const res = await axios.get("http://localhost:8000/api/v1/user/getCurrentUser" ,{
-              headers : {
-                Authorization : 'Bearer' + localStorage.getItem('accessToken')
-              }
-            })
-            if(res){
-              dispatch(currentUser(res.data.user))
-            }
-        } catch (error) {
-            console.log(error , "error when get current user")
-        }
-     }
-     getData()
-  },[])
+  // useEffect(()=>{
+  //    const getData = async() =>{
+  //       try {
+  //           const res = await axios.get("http://localhost:8000/api/v1/user/getCurrentUser" ,{
+  //             headers : {
+  //               Authorization : 'Bearer' + localStorage.getItem('accessToken')
+  //             }
+  //           })
+  //           if(res){
+  //             dispatch(currentUser(res.data.user))
+  //           }
+  //       } catch (error) {
+  //           console.log(error , "error when get current user")
+  //       }
+  //    }
+  //    getData()
+  // },[])
  
   return (
-    <div>
-      {/* {
-       ( */}
-          <div className="fixed z-10 w-full">
+    <div className="h-screen w-full">
+    
+      {
+        location.pathname !== "/" && (
+          <div className="fixed z-20 w-full h-24" >
                 <Navbar/>
           </div>
-        {/* )
-      } */}
-      {/* <div className=' text-white'> */}
-        <div className='flex  text-white  w-full'> 
-          {/* {
-              ( */}
-                <div className={`fixed sm:block z-10  ${visible? 'w-[220px]' : ''} `}>
-                  <div className="w-full">
-                        <Aside visible={visible}/>
-                  </div>
-                </div>
-              {/* )
-          }  */}
-          <div className="w-full">
-             <Outlet/>
+        )
+      }
+          <div className='flex  text-white h-screen w-full'> 
+              {location.pathname !== "/" && (
+                    <div className={`fixed z-10 sm:block ${visible? 'w-[220px]' : ''} `}>
+                      <div className="w-full">
+                            <Aside visible={visible}/>
+                      </div>
+                    </div>
+                  )
+                  }
+                <div>
+                    <div className="w-full h-screen">
+                      <Outlet/>
+                    </div>
+              </div>
           </div>
-        </div>
 
         <div className=" sm:hidden fixed bottom-0 left-0 w-full">
            <BottomBar/>
         </div>
-        {/* </div> */}
     </div>
   )
 }

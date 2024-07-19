@@ -17,8 +17,6 @@ function Navbar() {
     setShow(!show)
   }
 
-
-
   return (
     <div className='w-full  bg-black text-white z-40'>
             <div className='flex flex-row sm:gap-5  px-5 py-3'>

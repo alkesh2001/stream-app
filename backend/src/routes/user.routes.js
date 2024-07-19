@@ -13,5 +13,5 @@ router.route("/login").post(loginUser)
 router.route("/logout").post(verifyJWT , logoutUser )
 router.route('/getCurrentUser').get(verifyJWT , getCurrentUser)
 router.route("/c/:username").get(verifyJWT , getUserChannelProfile)
-router.route("/history").get(verifyJWT , getUserHistroy)
+router.route("/history/:userId").get(verifyJWT , getUserHistroy)
 export default router

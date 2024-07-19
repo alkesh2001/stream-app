@@ -11,10 +11,9 @@ export default function Protect ({children , authentication = true}) {
         if(authentication && authStatus !== authentication){
             navigate('/')
         }else if(!authentication && authStatus !== authentication){
-            navigate('/')
+            navigate('/Home')
         }
     },[])
-
 
     return <>{children}</>
 }

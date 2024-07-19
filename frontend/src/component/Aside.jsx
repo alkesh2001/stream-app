@@ -8,9 +8,7 @@ import { toggleVisiblity } from '../redux/auth/auth';
 function Aside() {
 
    const [subscribedCh , setSubscribedCh] = useState();
-   const location = useLocation()
 
-   const dispatch = useDispatch()
 
   const visible = useSelector(state => state.auth.visible)
 
@@ -32,10 +30,10 @@ function Aside() {
    },[])
 
   return (
-    <div className={`h-screen bg-black pt-20    ${visible? "" : "hidden"}`}>
-      <div className='absolute top-10 left-10' onClick={dispatch(toggleVisiblity())}>
+    <div className={`h-screen bg-black pt-20 `}>
+      {/* <div className='absolute top-10 left-10' onClick={()=> dispatch(toggleVisiblity())}>
         <ArrowLeft/>
-      </div>
+      </div> */}
       <div className='border-b pb-3 border-gray-600 px-2'>
         <div className='px-4 py-4 font-medium text-md flex hover:bg-gray-200 rounded-lg hover:text-black gap-4'> 
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>

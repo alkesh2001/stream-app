@@ -54,6 +54,7 @@ const authSlice = createSlice({
         });
         builder.addCase(loginData.fulfilled , (state , action) =>{
             state.isLoading = false ;
+            state.status = true
             state.data = action.payload;
         }) ;
         builder.addCase(loginData.rejected , (state , action) =>{

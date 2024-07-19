@@ -9,8 +9,8 @@ import { loginData } from '../redux/auth/auth'
 function Login() {
 
   const {register ,handleSubmit  } = useForm() 
-const dispatch = useDispatch();
-   const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
 
 const login =  async (userData) =>{
@@ -20,8 +20,8 @@ const login =  async (userData) =>{
 }
 
   return (
-    <div className='h-screen w-full px-5 flex justify-center items-center bg-gray-200'>
-       <div className='w-[400px]  py-5 rounded-2xl text-white bg-gray-800'>
+    <div className='h-screen w-screen px-5 flex justify-center items-center bg-gray-200'>
+       <div className='w-[400px] py-5 rounded-2xl text-white bg-gray-800'>
             <div className='text-lg font-medium text-center pt-5'>
                     welcome to Stream-App
             </div>

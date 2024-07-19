@@ -243,7 +243,6 @@ const getUserHistroy = asyncHandler(async(req , res) =>{
         }
       }
     ])
-    
     console.log()
     return res.status(200).json({ res : user[0].watchHistory  , message : "watch History successfully get "})
 })
