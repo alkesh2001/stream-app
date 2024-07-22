@@ -27,8 +27,9 @@ function Channel() {
                 <div className=''>
                     <div className='font-medium text-lg'>{userData && userData.username}</div>
                     <div className='font-medium text-sm'>{userData && userData.email}</div>
-                    <div className='bg-gray-700  text-sm font-medium rounded-2xl   px-1 py-1 mt-4'>
-                        <div className='text-center cursor-pointer' onClick={toggleshow}>Manage Video</div>
+                    <div className='flex gap-5'>
+                        <div className='bg-gray-700 flex gap-5 text-sm font-medium rounded-2xl   px-3 py-1 mt-4 cursor-pointer' onClick={toggleshow}>Manage Video</div>
+                        <div className='bg-gray-700 flex gap-5 text-sm font-medium rounded-2xl   px-3 py-1 mt-4 cursor-pointer' onClick={()=> navigate('/Stream')}>Stream</div>
                         <div className={`absolute top-32  ${visible? "left-[300px]" : "left-[250px]"} w-4/6 h-3/4 ${show? "" : "hidden"}`}>
                             <UploadVideo show={show} handleHide={handleHide}/> 
                         </div>

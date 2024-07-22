@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios, { all } from 'axios'
 import VideoCard from '../component/VideoCard'
 import { useSelector , useDispatch } from 'react-redux'
 import { currentUser } from '../redux/auth/auth'
@@ -45,17 +45,18 @@ function Home() {
      }
      getAllvideos()
   },[])
+  console.log(allvideo)
 
   const visible = useSelector(state => state.auth.visible)
 
   return (
     <div className=' h-full w-full  text-white'>
 
-           <div className={`sm:absolute  ${visible? "left-[220px]" : "left-[140px]"} pt-16  h-full col-span-12 px-6 `}>
-              <div className={`grid grid-cols-1    lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 `}>
+           <div className={`sm:absolute   ${visible? "left-[220px]" : "left-[140px]"} pt-16  h-full col-span-12 px-6 `}>
+              <div className={`flex flex-wrap sm:justify-start justify-center`}>
                 {
                   allvideo && allvideo.map((item , id)=>(
-                    <div>
+                    <div className=''>
                     <VideoCard item={item} key={id}/>
                     </div>
                   ))

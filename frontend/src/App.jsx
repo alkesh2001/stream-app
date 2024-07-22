@@ -47,7 +47,7 @@ function App() {
       }
           <div className='flex  text-white h-screen w-full'> 
               {location.pathname !== "/" && (
-                    <div className={`fixed z-10 sm:block ${visible? 'w-[220px]' : ''} `}>
+                    <div className={`fixed z-10 sm:block hidden ${visible? 'w-[220px]' : ''} `}>
                       <div className="w-full">
                             <Aside visible={visible}/>
                       </div>
@@ -61,9 +61,13 @@ function App() {
               </div>
           </div>
 
-        <div className=" sm:hidden fixed bottom-0 left-0 w-full">
-           <BottomBar/>
-        </div>
+        {
+          location.pathname !== '/' && (
+            <div className=" sm:hidden fixed bottom-0 left-0 w-full">
+              <BottomBar/>
+            </div>
+          )
+        }
     </div>
   )
 }

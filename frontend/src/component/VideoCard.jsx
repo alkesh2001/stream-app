@@ -6,7 +6,7 @@ function VideoCard({item}) {
 
    const [showCard , setShowCard] = useState(false);
   return (
-    <div className='px-2 mt-10' >
+    <div className='px-2 mt-10 w-[300px] '  >
        <div className='grid '>
          <Link to="/PlayVideo" state={{ item }}>
            <div className='h-[160px] w-full rounded-3xl'>

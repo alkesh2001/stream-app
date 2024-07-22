@@ -12,6 +12,7 @@ import { Provider} from 'react-redux'
 import Protect from './component/ProtectCompo.jsx'
 import AccountCard from './component/AccountCard.jsx'
 import Channel from './pages/Channel.jsx'
+import Stream from './pages/Stream.jsx'
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,15 @@ const router = createBrowserRouter([
           <Protect authentication>
             {''}
             <PlayVideo/>
+          </Protect>
+          ) 
+      },
+      {
+        path : "/Stream" ,
+        element :(
+          <Protect authentication>
+            {''}
+            <Stream/>
           </Protect>
           ) 
       }

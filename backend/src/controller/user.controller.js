@@ -203,48 +203,52 @@ const getUserChannelProfile = asyncHandler(async(req , res)=>{
 })
 
 const getUserHistroy = asyncHandler(async(req , res) =>{
-    const user = await User.aggregate([
-      {
-        $match:{
-          _id : new mongoose.Types.ObjectId(req.user._id)
-        }
-      },
-      {
-        $lookup :{
-          from : 'videos' ,
-          localField : "watchHistory" ,
-          foreignField : "_id" ,
-          as : "watchHistory",
-          pipeline :[
-            {
-              $lookup :{
-                from : "users",
-                localField : "owner" ,
-                foreignField : "_id",
-                as : "owner",
-                pipeline : [
-                  {
-                    $project : {
-                      fullname : 1 ,
-                      username : 1
+    try {
+      const user = await User.aggregate([
+        {
+          $match:{
+            _id : new mongoose.Types.ObjectId(req.user._id)
+          }
+        },
+        {
+          $lookup :{
+            from : 'videos' ,
+            localField : "watchHistory" ,
+            foreignField : "_id" ,
+            as : "watchHistory",
+            pipeline :[
+              {
+                $lookup :{
+                  from : "users",
+                  localField : "owner" ,
+                  foreignField : "_id",
+                  as : "owner",
+                  pipeline :[
+                    {
+                      $project : {
+                        fullname : 1 ,
+                        username : 1
+                      }
                     }
+                  ]
+                }
+              },
+              {
+                $addFields :{
+                  owner : {
+                    $first : "$owner"
                   }
-                ]
-              }
-            },
-            {
-              $addFields :{
-                owner : {
-                  $first : "$owner"
                 }
               }
-            }
-          ]
+            ]
+          }
         }
-      }
-    ])
-    console.log()
-    return res.status(200).json({ res : user[0].watchHistory  , message : "watch History successfully get "})
+      ])
+      console.log('user watch history ' ,user[0].watchHistory  )
+      return res.status(200).json({ res : user[0].watchHistory  , message : "watch History successfully get "})
+    } catch (error) {
+       return res.status(error?.status || 500).json({message :"error when i get watch history"})
+    }
 })
 
 

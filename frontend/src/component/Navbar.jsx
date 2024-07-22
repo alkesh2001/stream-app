@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react'
-import {Search, Youtube , Menu, Pointer} from "lucide-react"
+import {Search, Youtube , Menu, Pointer , X} from "lucide-react"
 import Input from './Input'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleVisiblity } from '../redux/auth/auth'
@@ -18,7 +18,7 @@ function Navbar() {
   }
 
   return (
-    <div className='w-full  bg-black text-white z-40'>
+          <div className='w-full  bg-black text-white z-40'>
             <div className='flex flex-row sm:gap-5  px-5 py-3'>
                 <div className='flex basis-1/4 sm:basis-2/5 md:basis-2/6 justify-start  md:gap-10  gap-3'>
                   <div className=' hidden  sm:flex justify-center items-center sm:ps-4'>
@@ -43,7 +43,7 @@ function Navbar() {
                 </div>
                     <div className='md:basis-1/6 relative basis-1/5 flex justify-end'>
                       <div onClick={showAccount} className='cursor-pointer bg-black border border-gray-500  text-xl  font-medium rounded-2xl h-10 w-10 flex justify-center items-center'>
-                          {userData && userData.username[0]}
+                          { show ? (<X/>) :  (userData && userData.username[0])}
                       </div>
                       <div className={`absolute top-14 w-[230px] ${show? "" : "hidden"}`}>
                         <Link to={'/Channel'}>
@@ -52,7 +52,7 @@ function Navbar() {
                       </div>
                     </div>
               </div>
-    </div>
+          </div>
   )
 }
 
