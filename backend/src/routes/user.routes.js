@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getCurrentUser, getUserChannelProfile, getUserHistroy, loginUser, logoutUser, registerUser } from "../controller/user.controller.js";
+import { getCurrentUser, getStreamkey, getUserChannelProfile, getUserHistroy, loginUser, logoutUser, registerUser, } from "../controller/user.controller.js";
 import { verifyJWT } from "../middlerware/auth.middleware.js";
 
 const router = Router()
@@ -14,4 +14,5 @@ router.route("/logout").post(verifyJWT , logoutUser )
 router.route('/getCurrentUser').get(verifyJWT , getCurrentUser)
 router.route("/c/:username").get(verifyJWT , getUserChannelProfile)
 router.route("/history").get(verifyJWT , getUserHistroy)
+router.route('/streamkey').get(verifyJWT , getStreamkey)
 export default router

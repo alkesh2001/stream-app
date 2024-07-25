@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { User } from "../models/user.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { json } from "express";
+import { Streamkey } from "../models/streamkey.model.js";
 
 const generateToken = async (userId) =>{
     try {
@@ -22,10 +23,19 @@ const generateToken = async (userId) =>{
 
     } catch (error) {
       console.log(error , 'error when generate acccess token')
-      // return  new error(error , "error when user generate token")
     }
-
 }
+
+
+const generateStreamKey = (length = 10) => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+};
 
 const registerUser = asyncHandler(async (req ,res )=>{
       const {username , fullname , email , password} = req.body
@@ -49,8 +59,16 @@ const registerUser = asyncHandler(async (req ,res )=>{
         password
       })
 
+      const userId = user._id
+      const streamKey = generateStreamKey(10)
+
+      await Streamkey.create({
+          owner : userId,
+          streamKey : streamKey
+      })
+
       const {accessToken} = await generateToken(user._id)
-      console.log(accessToken)
+      // console.log(accessToken)
 
 
       return res.status(200).json({user , accessToken ,message : "register user successfully"})
@@ -61,7 +79,7 @@ const loginUser = asyncHandler(async (req , res) =>{
    
   const {email , password} = req.body
 
-  console.log(email , password)
+  // console.log(email , password)
   
   if(!email){
     return res.status(404).json({message :"email is required "})
@@ -196,7 +214,7 @@ const getUserChannelProfile = asyncHandler(async(req , res)=>{
       if(!channel?.length){
         return res.status(404).json({message : "channel does not exist"})
       }
-      console.log(channel , "this data from channel")
+      // console.log(channel , "this data from channel")
 
      return res.status(200).json({ res : channel[0] , message : "user channel fatched successfully"})
 
@@ -244,13 +262,32 @@ const getUserHistroy = asyncHandler(async(req , res) =>{
           }
         }
       ])
-      console.log('user watch history ' ,user[0].watchHistory  )
+      // console.log('user watch history ' ,user[0].watchHistory  )
       return res.status(200).json({ res : user[0].watchHistory  , message : "watch History successfully get "})
     } catch (error) {
        return res.status(error?.status || 500).json({message :"error when i get watch history"})
     }
 })
 
+const getStreamkey = asyncHandler(async(req ,res)=>{
+    const userId = new mongoose.Types.ObjectId(req.user._id)
+    if(!userId){
+        return res.status(401).json({message : "userId not found in getstreamkey in streamcontroller"})
+    }
+
+    const  streamKey = await Streamkey.findOne({userId})
+
+    if(!streamKey){
+        return res.status(404).json({message : "streamkey not found "})
+    }
+
+    return res
+          .status(200)
+          .json({
+            streamKey : streamKey.streamKey ,
+            message : "user stream get successfully and generate"
+          })
+})
 
 export {
     registerUser,
@@ -258,5 +295,6 @@ export {
     logoutUser ,
     getCurrentUser,
     getUserChannelProfile,
-    getUserHistroy
+    getUserHistroy,
+    getStreamkey
 }

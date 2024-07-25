@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  rtmp:
+    build: ./rtmp
+    ports:
+      - "1935:1935"
+      - "8000:8000"
+    container_name: rtmp_server
+    volumes:
+      - ./backend/streamData:/temp/hls
+  backend:
+    build: ./backend
+    container_name: backend_server
+    environment:
+      - MONGODB_URI=mongodb+srv://alkeshsuthar4:alkesh2001@cluster0.d7cjnpd.mongodb.net/myDatabase?retryWrites=true&w=majority
+    ports:
+      - "8001:8000" # Assuming your backend runs on port 8000 internally
+
+networks:
+  default:
+    driver: bridge
