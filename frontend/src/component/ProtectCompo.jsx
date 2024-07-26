@@ -9,7 +9,7 @@ export default function Protect ({children , authentication = true}) {
 
     useEffect(()=>{
         if(authentication && authStatus !== authentication){
-            navigate('/Login')
+            navigate('/')
         }else if(!authentication && authStatus !== authentication){
             navigate('/Home')
         }
