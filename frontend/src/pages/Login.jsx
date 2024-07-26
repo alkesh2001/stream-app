@@ -3,7 +3,7 @@ import Input from "../component/Input"
 import Button from "../component/Button"
 import {useForm} from 'react-hook-form'
 import {  useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { loginData } from '../redux/auth/auth'
 
 function Login() {
@@ -11,11 +11,18 @@ function Login() {
   const {register ,handleSubmit  } = useForm() 
     const dispatch = useDispatch();
     const navigate = useNavigate()
+ 
+    const userData = useSelector(state => state.auth.data)
 
-
-const login =  async (userData) =>{
-
+  const login =  async (userData) =>{
     dispatch(loginData({userData})) 
+     
+    if(userData){
+      navigate('/Home')
+    }else(
+        navigate('/')
+    )
+
 }
 
   return (
