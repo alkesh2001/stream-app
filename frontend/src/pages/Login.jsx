@@ -16,7 +16,6 @@ function Login() {
 const login =  async (userData) =>{
 
     dispatch(loginData({userData})) 
-    navigate('/Home')
 }
 
   return (

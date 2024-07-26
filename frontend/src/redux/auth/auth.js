@@ -1,6 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
+const navigtae = useNavigate()
 export  const loginData = createAsyncThunk( "fetchData" , async ({userData})=>{
     // const response = await axios.post('http://localhost:8000/api/v1/user/login' , userData)
     // // if(response.data.accessToken){
@@ -16,10 +18,12 @@ export  const loginData = createAsyncThunk( "fetchData" , async ({userData})=>{
         }
         
         return response.data;
+        navigtae('/Home')
       } catch (error) {
         // Handle error by rejecting the thunk with an error message
         return rejectWithValue(error.response.data);
       }
+      
 })
 
 
