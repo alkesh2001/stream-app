@@ -12,7 +12,7 @@ function Home() {
   useEffect(()=>{
      const getData = async() =>{
         try {
-            const res = await axios.get("http://localhost:8000/api/v1/user/getCurrentUser" ,{
+            const res = await axios.get("https://stream-app-1.onrender.com/api/v1/user/getCurrentUser" ,{
               headers : {
                 Authorization : 'Bearer' + localStorage.getItem('accessToken')
               }
@@ -31,7 +31,7 @@ function Home() {
      
      const getAllvideos = async () =>{
        try {
-           const res  = await axios.get('http://localhost:8000/api/v1/videos/getAllVideos',{
+           const res  = await axios.get('hhttps://stream-app-1.onrender.com/api/v1/videos/getAllVideos',{
             headers : {
               Authorization : `Bearer` + localStorage.getItem("accessToken")
             }
