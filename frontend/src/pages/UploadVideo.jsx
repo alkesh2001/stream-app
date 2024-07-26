@@ -13,7 +13,6 @@ function UploadVideo({show , handleHide}) {
   const [image , setImage ] = useState(null)
   const [isUploading, setIsUploading] = useState(false) 
   const [successfull , setSuccessfull] = useState(false)
-  const [hide ,setHide] = useState(false)
 
   const uploadThumbnail = (e)=>{
       const file = e.target.files[0]
@@ -54,7 +53,7 @@ function UploadVideo({show , handleHide}) {
 
   return (
 
-    <div className='h-full w-full relative'>
+    <div className='h-full w-full relative pb-20'>
       <div className={` bg-gray-800 py-8 rounded-xl ${show ? "" : "hidden"}`}>
             <div onClick={handleHide} className='hover:bg-gray-600 h-10 w-10 rounded-full absolute top-4 right-4 flex justify-center items-center'>
               <X/>
@@ -69,39 +68,39 @@ function UploadVideo({show , handleHide}) {
             </div>
           </div>
         ) : (
-          <div className='bg-gray-800 h-full  w-full rounded-xl overflow-scroll'>
-            <div className='px-10 top- py-4 left-0 flex justify-between'> 
+          <div className='bg-gray-800 h-full w-full rounded-xl '>
+            <div className='px-10  py-4 left-0 flex justify-between'> 
               <div className='font-medium py text-lg'>
                   Details
               </div>
-          </div>
-          <div className={`h-full  w-full  px-6 flex gap-2 `}>
-            <div className='w-3/5 '>
-                <div className='w-full'>
-                    <Input onChange={(e)=> setTitle(e.target.value)} className="text-white rounded-lg h-16 bg-gray-800  border-gray-400 border hover:border-white flex flex-row" placeholder="Title"/>
-                </div> 
-                <div className='w-full my-6'>
-                  <textarea name="" onChange={(e)=> setDescription(e.target.value)} className="rounded-lg outline-none p-3 text-md font-medium  h-28 w-full bg-gray-800 border-gray-400 border hover:border-white " placeholder='Description'></textarea>
-                </div> 
-              <div className=''>
-                    <div className='h-32 flex justify-center items-center rounded-md w-40 border-dashed border border-gray-500 '  style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                    <Input type="file" onChange={uploadThumbnail}   accept="image/png, image/jpg, image/jpeg, image/gif" id="thumbnail" className="hidden"/>
-                      <label htmlFor="thumbnail">   
+            </div>
+            <div className={`h-full  w-full  px-6 sm:flex gap-2 `}>
+              <div className='sm:w-3/5 w-full'>
+                  <div className='w-full'>
+                      <Input onChange={(e)=> setTitle(e.target.value)} className="text-white rounded-lg h-16 bg-gray-800  border-gray-400 border hover:border-white flex flex-row" placeholder="Title"/>
+                  </div> 
+                  <div className='w-full my-6'>
+                    <textarea name="" onChange={(e)=> setDescription(e.target.value)} className="rounded-lg outline-none p-3 text-md font-medium  h-28 w-full bg-gray-800 border-gray-400 border hover:border-white " placeholder='Description'></textarea>
+                  </div> 
+                <div className=''>
+                      <div className='h-32 flex justify-center my-5 sm:my-0 items-center rounded-md w-full sm:w-40 border-dashed border border-gray-500 '  style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                      <Input type="file" onChange={uploadThumbnail}   accept="image/png, image/jpg, image/jpeg, image/gif" id="thumbnail" className="hidden"/>
+                        <label htmlFor="thumbnail">   
                           <Upload id='thumbnail'/>
                       </label>
                     </div>
                 </div>
             </div>
-            <div className='w-2/5 h-1/2  '>
+            <div className='sm:w-2/5 w-full h-1/2  '>
               <div className='flex justify-center h-full w-full ' >
-                <div className='h-44 w-3/5 rounded-xl bg-green-500 flex justify-center items-center'>
+                <div className='h-44 sm:w-3/5 w-full rounded-xl bg-green-500 flex justify-center items-center'>
                   <Input type="file" onChange={(e)=> setVideoFile(e.target.files[0])} accept="video/mp4, video/webm, video/ogg" id="video" className="hidden"/>
                   <label htmlFor="video">   
                       <Upload id='video'/>
                   </label>
                 </div>
               </div>
-              <div className='flex justify-end px-20 pt-40'>
+              <div className='flex justify-center sm:justify-end px-20 pt-5 sm:py-5 sm:pt-40'>
                 <Button onClick={uploadVideo} value={'Uplaod'} className="bg-gray-600 hover:bg-black hover:text-white px-3 py-2 text-white font-medium rounded-xl"/>
               </div>
             </div>

@@ -4,7 +4,7 @@ import React from 'react'
 function BottomBar() {
   return (
     <div className='bg-black py-5  rounded-tr-3xl rounded-t-3xl '>
-       <div className='flex justify-center gap-14'>
+       <div className='flex justify-center gap-14 text-white'>
         <div><Home/></div>
         <div> <Flame /></div>
         <div> <GalleryVerticalEnd /></div>
