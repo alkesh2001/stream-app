@@ -21,7 +21,7 @@ function AccountCard() {
         </div>
       </div>
       <div onClick={ async ()=>{
-               await axios.post("http://localhost:8000/api/v1/user/logout",{},{
+               await axios.post("https://stream-app-1.onrender.com/api/v1/user/logout",{},{
                   headers :{
                     Authorization : "Bearer" + localStorage.getItem("accessToken")
                   }

@@ -33,7 +33,7 @@ function UploadVideo({show , handleHide}) {
           formData.append('thumbnail', imageFile);
           formData.append('videoFile', videoFile);
 
-       const res = await axios.post("http://localhost:8000/api/v1/videos/uploadVideo",formData,
+       const res = await axios.post("https://stream-app-1.onrender.com/api/v1/videos/uploadVideo",formData,
           {
             headers : {
               Authorization : "Bearer" + localStorage.getItem("accessToken")

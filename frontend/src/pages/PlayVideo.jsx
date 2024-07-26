@@ -15,7 +15,7 @@ function PlayVideo() {
 
    const subs = async () =>{
      try {
-       const res = await axios.post(`http://localhost:8000/api/v1/subscription/c/${item.owner}` , {},{
+       const res = await axios.post(`https://stream-app-1.onrender.com/api/v1/subscription/c/${item.owner}` , {},{
          headers : {
            Authorization : 'Bearer' + localStorage.getItem("accessToken")
           }
@@ -34,7 +34,7 @@ function PlayVideo() {
     useEffect(()=>{
          const resdata = async () =>{
           try {
-            const res = await axios.get(`http://localhost:8000/api/v1/user/c/${item.username}` ,{
+            const res = await axios.get(`https://stream-app-1.onrender.com/api/v1/user/c/${item.username}` ,{
               headers : {
                 Authorization : 'Bearer' + localStorage.getItem("accessToken")
               }
