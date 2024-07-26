@@ -3,13 +3,10 @@ import mongoose from 'mongoose'
 import express from 'express'
 import cors from "cors"
 import cookieParse from "cookie-parser"
-import { verifyJWT } from './middlerware/auth.middleware.js'
 const app = express()
 
 app.use(cors({
     origin : process.env.CORS_ORIGIN ,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials : true
 }))
 
