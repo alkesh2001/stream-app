@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server:{
     proxy:{
-      '/api': {
+       '/api': {
         target: 'https://stream-app-1.onrender.com',
         changeOrigin: true,
         secure: false,
