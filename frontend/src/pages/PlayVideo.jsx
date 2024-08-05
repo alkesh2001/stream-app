@@ -52,7 +52,7 @@ function PlayVideo() {
     },[subscribe])
 
   return (
-    <div className={`${visible? "ps-[200px]" : "md:ps-[80px]"} `}>
+    <div className={`${visible? "md:ps-[200px]" : "sm:ps-[80px]"} `}>
       <div className=' h-full md:w-8/12 px-7 pt-24 text-white'>
         <div className=' grid justify-left '>
           <div className='h-full  px-5  flex justify-center'>
