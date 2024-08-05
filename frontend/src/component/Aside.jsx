@@ -12,7 +12,7 @@ function Aside() {
   useEffect(()=>{
      const getSubCh = async ()=>{
       try {
-        const res = await axios.get(`https://stream-app-1.onrender.com/api/v1/subscription/u/666be4be8b1ff98efaa556ef`,{
+        const res = await axios.get(`http://localhost:8000/api/v1/subscription/u/666be4be8b1ff98efaa556ef`,{
           headers :{
             Authorization : "Bearer" + localStorage.getItem("accessToken")
           }   

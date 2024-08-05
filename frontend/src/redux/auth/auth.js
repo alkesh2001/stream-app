@@ -1,23 +1,20 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 export  const loginData = createAsyncThunk( "fetchData" , async ({userData})=>{
 
     try {
-        const response = await axios.post('https://stream-app-1.onrender.com/api/v1/user/login', userData);
-        
+        const response = await axios.post('https://stream-app-1.onrender.com/api/v1/user/login', userData); 
         // Save access token to localStorage if available
-        if (response.data.accessToken) {
+        if (response) {
           localStorage.setItem("accessToken", response.data.accessToken);
         }
-            return response.data;
+            // return response.data;
         
-      } catch (error) {
+    } catch (error) {
 
         return rejectWithValue(error.response.data);
       }
-      
 })
 
 const initialState = {
