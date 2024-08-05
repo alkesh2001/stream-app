@@ -54,7 +54,7 @@ function Home() {
   return (
     <div className=' h-full w-full  text-white'>
           {showVideo ? (
-            <div className='bg-gray-700  w-2/5 absolute top-1/3 left-1/3  text-white p-4 rounded-xl text-md grid gap-3 justify-center mt-4'>
+            <div className='bg-gray-700  w-[300px] absolute top-1/3 left-1/3  text-white p-4 rounded-xl text-md grid gap-3 justify-center mt-4'>
               <div className='flex justify-center'>
                   <div className='h-6 w-6 rounded-full border-4 border-b-gray-700 animate-spin border-blue-400'> </div>
               </div>
