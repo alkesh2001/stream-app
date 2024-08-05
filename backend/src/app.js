@@ -6,7 +6,7 @@ import cookieParse from "cookie-parser"
 const app = express()
 
 app.use(cors({
-  origin: 'https://stream-app-alkeshs-projects-3a89a53f.vercel.app', // replace with your frontend URL
+  origin: 'https://stream-app-lyart.vercel.app', // replace with your frontend URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 }))
