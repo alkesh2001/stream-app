@@ -3,6 +3,7 @@ import axios, { all } from 'axios'
 import VideoCard from '../component/VideoCard'
 import { useSelector , useDispatch } from 'react-redux'
 import { currentUser } from '../redux/auth/auth'
+import {LoaderCircle} from "lucide-react"
 function Home() {
 
   
@@ -54,9 +55,10 @@ function Home() {
   return (
     <div className=' h-full w-full  text-white'>
           {showVideo ? (
-            <div className='bg-gray-700  w-[300px] sm:absolute h-full  items-center sm:left-1/3 left-0 text-white p-4 rounded-xl text-md flex justify-center mt-4'>
+            <div className='bg-gray-700 sm:absolute sm:top-1/3 items-center sm:left-1/3 left-0 text-white p-4 rounded-xl text-md flex justify-center mt-4'>
               <div className='flex justify-center'>
-                  <div className='h-6 w-6 rounded-full border-4 border-b-gray-700 animate-spin border-blue-400'> </div>
+                 <LoaderCircle />
+                  {/* <div className='h-6 w-6 rounded-full border-4 animate-spin border-blue-400'> </div> */}
               </div>
             </div>
           ) : (
