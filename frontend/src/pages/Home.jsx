@@ -55,10 +55,10 @@ function Home() {
   return (
     <div className=' h-full w-full  text-white'>
           {showVideo ? (
-            <div className='sm:absolute sm:top-1/3 items-center sm:left-1/2   flex justify-center '>
+            <div className='sm:absolute top-1/2 left-1/2 '>
               <div className='flex justify-center'>
                   <div className='animate-spin'> 
-                     <LoaderCircle />
+                     <LoaderCircle  />
                   </div>
               </div>
             </div>
