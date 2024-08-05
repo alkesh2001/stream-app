@@ -55,21 +55,23 @@ function Home() {
   return (
     <div className=' h-full w-full  text-white'>
           {showVideo ? (
-            <div className='sm:absolute top-1/2 left-1/2 '>
-              <div className='flex justify-center'>
+            <div className='h-full w-screen flex justify-center items-center'>
                   <div className='animate-spin'> 
                      <LoaderCircle  />
                   </div>
-              </div>
             </div>
           ) : (
-              <div className='sm:absolute top-1/2 left-1/2 '>
-                  <div className='flex justify-center'>
-                      <div className='animate-spin'> 
-                        <LoaderCircle  />
+              <div className={`sm:absolute   ${visible? "left-[220px]" : "left-[140px]"} pt-16  h-full col-span-12`}>
+                <div className={`flex flex-wrap sm:justify-start justify-center`}>
+                  {
+                    allvideo && allvideo.map((item , id)=>(
+                      <div className=''>
+                          <VideoCard item={item} key={id}/>
                       </div>
-                  </div>
-              </div>
+                    ))
+                  }
+                </div>z
+           </div>
             )
           }
         </div>
