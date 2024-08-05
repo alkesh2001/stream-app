@@ -61,7 +61,7 @@ function Home() {
               Please wait
             </div>
           ) : (
-              <div className={`sm:absolute   ${visible? "left-[220px]" : "left-[140px]"} pt-16  h-full col-span-12 px-6 `}>
+              <div className={`sm:absolute   ${visible? "left-[220px]" : "left-[140px]"} pt-16  h-full col-span-12`}>
               <div className={`flex flex-wrap sm:justify-start justify-center`}>
                 {
                   allvideo && allvideo.map((item , id)=>(
