@@ -55,10 +55,11 @@ function Home() {
   return (
     <div className=' h-full w-full  text-white'>
           {showVideo ? (
-            <div className='bg-gray-700 sm:absolute sm:top-1/3 items-center sm:left-1/3 left-0 text-white p-4 rounded-xl text-md flex justify-center mt-4'>
+            <div className='sm:absolute sm:top-1/3 items-center sm:left-1/2   flex justify-center '>
               <div className='flex justify-center'>
-                 <LoaderCircle />
-                  {/* <div className='h-6 w-6 rounded-full border-4 animate-spin border-blue-400'> </div> */}
+                  <div className='animate-spin'> 
+                     <LoaderCircle />
+                  </div>
               </div>
             </div>
           ) : (
