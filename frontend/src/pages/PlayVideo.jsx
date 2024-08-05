@@ -66,8 +66,8 @@ function PlayVideo() {
                 <div className='px-3  text-xs text-gray-500 '>{item.views} views </div>
             </div>
             <div className='flex justify-center gap-4 pt-3 px-10'>
-              <div className='bg-black border border-gray-500 h-10 w-12 rounded-2xl flex items-center justify-center'><ThumbsUp height={'20px'}/></div>
-              <div className='pt-1 bg-black border border-gray-500 h-10 w-12 rounded-2xl flex items-center justify-center' > <ThumbsDown height={'20px'} /></div>
+              <div className='bg-black border border-gray-500 sm:h-10 sm:w-12 h-8 w-10 rounded-2xl flex items-center justify-center'><ThumbsUp height={'sm:20px 16px'}/></div>
+              <div className='pt-1 bg-black border border-gray-500 sm:h-10 md:w-12 h-8 w-10 rounded-2xl flex items-center justify-center' > <ThumbsDown height={'sm:20px 16px'} /></div>
             </div>
           </div>
           <div className='ps-7  w-full items-center flex justify-between'>
@@ -80,7 +80,7 @@ function PlayVideo() {
               </div>
             </div>
             <div className='me-8  pt-3'>
-              <span onClick={subs}  className='cursor-pointer rounded-full border border-gray-500 px-3 py-1 font-medium text-sm'>
+              <span onClick={subs}  className='cursor-pointer rounded-full border border-gray-500 px-3 py-1 font-medium text-md'>
                   {checkSub ? "subscribed" : "susbcribe"}
               </span>
             </div>

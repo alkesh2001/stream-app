@@ -18,8 +18,20 @@ import Stream from './pages/Stream.jsx'
 const router = createBrowserRouter([
   {
      path : '/',
-     element : <App/>,
+     element :(
+         <Protect authentication>
+           <App/>
+         </Protect>
+     ) ,
      children : [
+       {
+         path : '/',
+         element : (
+           <Protect authentication={false}>
+                <Login/>
+           </Protect>
+           ) 
+       },
       {
         path : "/Home" ,
         element :(
@@ -29,14 +41,6 @@ const router = createBrowserRouter([
           </Protect>
           ) 
       } ,
-      {
-        path : '/',
-        element : (
-          <Protect authentication={false}>
-               <Login/>
-          </Protect>
-          ) 
-      },
       {
         path : "/Upload",
         element : <UploadVideo/>
