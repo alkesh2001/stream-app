@@ -74,7 +74,6 @@ function Home() {
            </div>
             )
           }
-          
         </div>
   
   )

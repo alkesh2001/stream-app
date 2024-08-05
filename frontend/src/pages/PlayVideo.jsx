@@ -52,8 +52,8 @@ function PlayVideo() {
     },[subscribe])
 
   return (
-    <div className={`${visible? "md:ps-[200px]" : "sm:ps-[80px]"} `}>
-      <div className=' h-full md:w-8/12 px-7 pt-24 text-white'>
+    <div className={`mb-24 ${visible? "md:ps-[200px]" : "sm:ps-[80px]"} `}>
+      <div className=' h-full md:w-8/12 sm:px-7 pt-24  text-white'>
         <div className=' grid justify-left '>
           <div className='h-full  px-5  flex justify-center'>
               <video width="full" height="full" className='rounded-2xl'controls >
