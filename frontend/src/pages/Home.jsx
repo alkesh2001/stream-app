@@ -57,11 +57,11 @@ function Home() {
           {showVideo ? (
             <div className='h-full w-screen flex justify-center items-center'>
                   <div className='animate-spin'> 
-                     <LoaderCircle  />
+                     <LoaderCircle height={"36px"} width={"36px"}/>
                   </div>
             </div>
           ) : (
-              <div className={`sm:absolute   ${visible? "left-[220px]" : "left-[140px]"} pt-16  h-full col-span-12`}>
+              <div className={`sm:absolute   ${visible? "left-[220px]" : "left-[140px]"} pt-16  h-full col-span-12 sm:px-6`}>
                 <div className={`flex flex-wrap sm:justify-start justify-center`}>
                   {
                     allvideo && allvideo.map((item , id)=>(
@@ -70,7 +70,7 @@ function Home() {
                       </div>
                     ))
                   }
-                </div>z
+                </div>
            </div>
             )
           }
