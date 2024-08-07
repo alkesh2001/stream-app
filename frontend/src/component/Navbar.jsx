@@ -25,8 +25,8 @@ function Navbar() {
                   <div className=' hidden  sm:flex justify-center items-center sm:ps-4'>
                     <Menu onClick={()=> dispatch(toggleVisiblity())} cursor={Pointer}/>
                   </div>
-                  <div className=' flex gap-2 justify-center items-center cursor-pointer' onClick={()=> navigate('/Home')}>
-                    <Airplay  height={'40px'} width={'40px'} />
+                  <div className=' flex gap-3 justify-center items-center cursor-pointer' onClick={()=> navigate('/Home')}>
+                    <Airplay  height={'36px'} width={'36px'} />
                     <span className='hidden text-sm md:text-lg sm:block'>Stream-App</span>
                   </div>
                 </div>

@@ -24,7 +24,7 @@ function Aside() {
      }
 
      getSubCh()
-   },[])
+   },[subscribedCh])
 
   return (
     <div className={`h-screen bg-black pt-20 `}>
