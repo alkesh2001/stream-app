@@ -1,11 +1,12 @@
 import React, { useState , useEffect } from 'react'
-import {Search, Youtube , Menu, Pointer , X} from "lucide-react"
+import {Search, Airplay , Menu, Pointer , X} from "lucide-react"
 import Input from './Input'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleVisiblity } from '../redux/auth/auth'
 import AccountCard from './AccountCard'
 import { Link, useNavigate } from 'react-router-dom'
-import { currentUser } from '../redux/auth/auth.js'
+
+
 function Navbar() {
   
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function Navbar() {
                     <Menu onClick={()=> dispatch(toggleVisiblity())} cursor={Pointer}/>
                   </div>
                   <div className=' flex gap-2 justify-center items-center cursor-pointer' onClick={()=> navigate('/Home')}>
-                    <Youtube height={'40px'} width={'40px'} />
+                    <Airplay  height={'40px'} width={'40px'} />
                     <span className='hidden text-sm md:text-lg sm:block'>Stream-App</span>
                   </div>
                 </div>
