@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { ThumbsUp ,ThumbsDown ,ChevronDown, Rss } from 'lucide-react';
 import axios from "axios"
 import { useSelector } from 'react-redux';
+import ReactPlayer from 'react-player';
 
 function PlayVideo() {
    const location = useLocation()
@@ -56,9 +57,12 @@ function PlayVideo() {
       <div className=' h-full md:w-8/12 sm:px-7 pt-24  text-white'>
         <div className=' grid justify-left '>
           <div className='h-full  px-5  flex justify-center'>
-              <video width="full" height="full" className='rounded-2xl'controls >
-                    <source src={item.videoFile} type="video/mp4"/>
-              </video>
+          <ReactPlayer
+              url={item.videoFile}
+              controls={true}
+              width="100%"
+              height="100%"
+            />
           </div>
           <div className='flex  w-full justify-between'>
             <div className='px-6 '>
